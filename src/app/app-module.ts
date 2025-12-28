@@ -12,6 +12,9 @@ import { CasesModule } from './features/cases/cases-module';
 import { WorkflowModule } from './features/workflows/workflow-module';
 import { AdminModule } from './features/admin/admin-module';
 
+import { ButtonModule } from 'primeng/button';
+import { providePrimeNG } from 'primeng/config';
+import Lara from '@primeuix/themes/lara';
 @NgModule({
   declarations: [App],
   imports: [
@@ -25,8 +28,19 @@ import { AdminModule } from './features/admin/admin-module';
     CasesModule,
     WorkflowModule,
     AdminModule,
+    ButtonModule,
   ],
-  providers: [provideBrowserGlobalErrorListeners()],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    providePrimeNG({
+      theme: {
+        preset: Lara,
+        options: {
+          darkModeSelector: false,
+        },
+      },
+    }),
+  ],
   bootstrap: [App],
 })
 export class AppModule {}
