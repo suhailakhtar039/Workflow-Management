@@ -1,1 +1,8 @@
-<p>dashboard-home-component works!</p>
+<p-card>
+  <ng-template pTemplate="title"> Welcome to the Dashboard {{ username }}</ng-template>
+  <ng-template pTemplate="content">
+    <p>Your role is: {{ role }}</p>
+    <button pButton type="button" label="View Reports" *ngIf="isviewer"></button>
+    <button pButton type="button" label="Manage Users" *ngIf="!isviewer"></button>
+  </ng-template>
+</p-card>
