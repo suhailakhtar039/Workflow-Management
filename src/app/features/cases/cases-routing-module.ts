@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CaseListComponent } from './case-list/case-list-component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path:'',
+    component:CaseListComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

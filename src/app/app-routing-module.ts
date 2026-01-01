@@ -35,6 +35,14 @@ const routes: Routes = [
       // cases, workflows, admin, etc.
     ],
   },
+  {
+    path: 'cases',
+    loadChildren: () => import('./features/cases/cases-module').then((m) => m.CasesModule),
+    canActivate: [roleGuard],
+    data: {
+      roles: ['ADMIN', 'OFFICER', 'VIEWER'],
+    },
+  },
 
   // Fallback
   {
