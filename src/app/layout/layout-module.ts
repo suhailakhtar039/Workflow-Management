@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout-component/layout-component';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 // PrimeNG Modules
 import { ButtonModule } from 'primeng/button';
 import { DrawerModule } from 'primeng/drawer';
@@ -22,7 +22,7 @@ const primeModule = [
 ];
 @NgModule({
   declarations: [LayoutComponent],
-  imports: [CommonModule, RouterOutlet, ...primeModule],
-  exports: [LayoutComponent],
+  imports: [CommonModule, RouterOutlet, RouterModule, ...primeModule],
+  exports: [LayoutComponent, RouterModule],
 })
 export class LayoutModule {}
