@@ -31,17 +31,18 @@ const routes: Routes = [
         },
       },
 
+      {
+        path: 'cases',
+        loadChildren: () => import('./features/cases/cases-module').then((m) => m.CasesModule),
+        canActivate: [roleGuard],
+        data: {
+          roles: ['ADMIN', 'OFFICER', 'VIEWER'],
+        },
+      },
+
       // future protected routes go here
       // cases, workflows, admin, etc.
     ],
-  },
-  {
-    path: 'cases',
-    loadChildren: () => import('./features/cases/cases-module').then((m) => m.CasesModule),
-    canActivate: [roleGuard],
-    data: {
-      roles: ['ADMIN', 'OFFICER', 'VIEWER'],
-    },
   },
 
   // Fallback
