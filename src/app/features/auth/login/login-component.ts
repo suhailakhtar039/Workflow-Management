@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../../../core/auth/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,29 @@ import { Router } from '@angular/router';
   templateUrl: './login-component.html',
   styleUrl: './login-component.css',
 })
-export class LoginComponent {
-  username = '';
-  password = '';
+export class LoginComponent implements OnInit {
+  loginForm!: FormGroup;
+  submitted = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {}
 
-  login(): void {
-    this.authService.login(this.username, this.password);
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
+
+  onSubmit(): void {
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+    const { email, password } = this.loginForm.value;
+    console.log('Login Data:', email, password);
+    this.authService.login(email, password);
     this.router.navigate(['/dashboard']);
+    // call auth service here
   }
 }
