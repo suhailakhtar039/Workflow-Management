@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-case-create-component',
@@ -10,10 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CaseCreateComponent {
   case!: FormGroup;
   statusOptions;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.case = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
-      description: [''],
+      description: ['', Validators.required],
       assignedTo: ['', Validators.required],
       status: ['', Validators.required],
     });
@@ -25,6 +26,7 @@ export class CaseCreateComponent {
   }
 
   onSubmit(): void {
-    console.log('Case Created:', this.case);
+    console.log('Case Created:', this.case.value.title);
+    this.router.navigate(['/cases']);
   }
 }
