@@ -1,1 +1,43 @@
-<p>case-create-component works!</p>
+<form [formGroup]="case" (ngSubmit)="onSubmit()">
+  <p-card header="Create Case">
+    <div class="grid">
+      <!-- Row 1 -->
+      <div class="col-6">
+        <label for="title" class="block mb-2">Title</label>
+        <input pInputText id="title" formControlName="title" class="w-full" />
+      </div>
+
+      <div class="col-6">
+        <label for="description" class="block mb-2">Description</label>
+        <textarea
+          pInputTextarea
+          id="description"
+          formControlName="description"
+          rows="3"
+          class="w-full"
+        ></textarea>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="col-6">
+        <label for="status" class="block mb-2">Status</label>
+        <p-select
+          class="w-full"
+          [options]="statusOptions"
+          placeholder="Select status"
+          formControlName="status"
+        ></p-select>
+      </div>
+
+      <div class="col-6">
+        <label for="assignedTo" class="block mb-2">Assigned To</label>
+        <input pInputText id="assignedTo" formControlName="assignedTo" class="w-full" />
+      </div>
+
+      <!-- Button -->
+      <div class="col-12 flex justify-content-center mt-4">
+        <button pButton type="submit" label="Create Case" [disabled]="case.invalid"></button>
+      </div>
+    </div>
+  </p-card>
+</form>
