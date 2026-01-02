@@ -10,6 +10,9 @@ import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
 import { FormsModule } from '@angular/forms';
 
+//components
+import { CaseCreateComponent } from './case-create/case-create-component';
+
 //prime ng imports
 
 //prime ng modules
@@ -21,7 +24,7 @@ const primengModulesAndImports = [
   IconFieldModule,
 ];
 @NgModule({
-  declarations: [CaseListComponent],
+  declarations: [CaseListComponent, CaseCreateComponent],
   imports: [CommonModule, FormsModule, CasesRoutingModule, ...primengModulesAndImports],
 })
 export class CasesModule {}
