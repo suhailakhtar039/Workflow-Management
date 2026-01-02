@@ -8,7 +8,11 @@ import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
-import { FormsModule } from '@angular/forms';
+import { SelectModule } from 'primeng/select';
+import { CardModule } from 'primeng/card';
+import { TextareaModule } from 'primeng/textarea';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //components
 import { CaseCreateComponent } from './case-create/case-create-component';
@@ -22,9 +26,18 @@ const primengModulesAndImports = [
   InputTextModule,
   InputIconModule,
   IconFieldModule,
+  SelectModule,
+  CardModule,
+  TextareaModule,
 ];
 @NgModule({
   declarations: [CaseListComponent, CaseCreateComponent],
-  imports: [CommonModule, FormsModule, CasesRoutingModule, ...primengModulesAndImports],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CasesRoutingModule,
+    ...primengModulesAndImports,
+  ],
 })
 export class CasesModule {}
