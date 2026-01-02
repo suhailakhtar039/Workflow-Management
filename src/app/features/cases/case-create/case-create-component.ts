@@ -19,9 +19,10 @@ export class CaseCreateComponent {
       status: ['', Validators.required],
     });
     this.statusOptions = [
-      { label: 'Low', value: 'Low' },
-      { label: 'Medium', value: 'Medium' },
-      { label: 'High', value: 'High' },
+      { label: 'DRAFT', value: 'DRAFT' },
+      { label: 'SUBMITTED', value: 'SUBMITTED' },
+      { label: 'APPROVED', value: 'APPROVED' },
+      { label: 'REJECTED', value: 'REJECTED' },
     ];
   }
 
