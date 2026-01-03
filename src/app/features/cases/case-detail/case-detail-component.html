@@ -1,1 +1,43 @@
-<p>case-detail-component works!</p>
+<p-card>
+  <ng-template pTemplate="header"> Case Details: {{ case.title }} </ng-template>
+
+  <div class="grid mt-2">
+    <div class="col-6 field">
+      <strong><label>ID</label></strong>
+      <div>{{ case.id }}</div>
+    </div>
+
+    <div class="col-6 field">
+      <strong><label>Description</label></strong>
+      <div>{{ case.description }}</div>
+    </div>
+
+    <div class="col-6 field">
+      <strong><label>Status</label></strong>
+      <div>{{ case.status }}</div>
+    </div>
+
+    <div class="col-6 field">
+      <strong><label>Assigned To</label></strong>
+      <div>{{ case.assignedTo }}</div>
+    </div>
+
+    <div class="col-6 field">
+      <strong><label>Created At</label></strong>
+      <div>{{ case.createdAt | date }}</div>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Back"
+      icon="pi pi-arrow-left"
+      iconPos="left"
+      severity="primary"
+      [outlined]="true"
+      styleClass="p-button-lg"
+      (click)="goBack()"
+      aria-label="Go back to cases list"
+    ></p-button>
+  </ng-template>
+</p-card>
