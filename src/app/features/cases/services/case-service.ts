@@ -48,4 +48,8 @@ export class CaseService {
   getCases(): Observable<Case[]> {
     return of(this.cases);
   }
+
+  getCaseById(id: string): Case | undefined {
+    return this.cases.find((c) => c.id == id);
+  }
 }
