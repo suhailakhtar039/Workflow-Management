@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //components
 import { CaseCreateComponent } from './case-create/case-create-component';
+import { CaseDetailComponent } from './case-detail/case-detail-component';
 
 //prime ng imports
 
@@ -31,7 +32,7 @@ const primengModulesAndImports = [
   TextareaModule,
 ];
 @NgModule({
-  declarations: [CaseListComponent, CaseCreateComponent],
+  declarations: [CaseListComponent, CaseCreateComponent, CaseDetailComponent],
   imports: [
     CommonModule,
     FormsModule,
