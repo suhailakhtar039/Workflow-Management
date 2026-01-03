@@ -69,6 +69,7 @@
           ></p-button>
 
           <span *ngIf="isViewer$ | async" class="text-gray-400"> View Only </span>
+          <p-button icon="pi pi-eye" severity="info" (onClick)="onView(caseItem)"></p-button>
         </td>
       </tr>
     </ng-template>

@@ -37,4 +37,8 @@ export class CaseListComponent {
   onDelete(caseItem: Case): void {
     console.log('Delete case:', caseItem);
   }
+
+  onView(caseItem: Case): void {
+    console.log('View case:', caseItem);
+  }
 }
