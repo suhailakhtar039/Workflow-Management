@@ -7,6 +7,7 @@ export interface Case {
   status: 'DRAFT' | 'SUBMITTED' | 'APPROVED' | 'REJECTED';
   assignedTo: string;
   createdAt: string;
+  description: string;
 }
 
 @Injectable({
@@ -21,6 +22,7 @@ export class CaseService {
       status: 'DRAFT',
       assignedTo: 'John Doe',
       createdAt: '2023-01-01',
+      description: 'This is the description for Case 1',
     },
     {
       id: '2',
@@ -28,6 +30,7 @@ export class CaseService {
       status: 'SUBMITTED',
       assignedTo: 'Jane Smith',
       createdAt: '2023-01-02',
+      description: 'This is the description for Case 2',
     },
     {
       id: '3',
@@ -35,6 +38,7 @@ export class CaseService {
       status: 'APPROVED',
       assignedTo: 'Bob Johnson',
       createdAt: '2023-01-03',
+      description: 'This is the description for Case 3',
     },
     {
       id: '4',
@@ -42,6 +46,7 @@ export class CaseService {
       status: 'REJECTED',
       assignedTo: 'Alice Brown',
       createdAt: '2023-01-04',
+      description: 'This is the description for Case 4',
     },
   ];
 
