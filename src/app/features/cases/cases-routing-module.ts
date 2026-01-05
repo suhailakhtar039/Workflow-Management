@@ -9,10 +9,17 @@ const routes: Routes = [
     path: '',
     component: CaseListComponent,
   },
+
   {
     path: 'create',
     component: CaseCreateComponent,
   },
+
+  {
+    path: ':id/edit',
+    component: CaseCreateComponent,
+  },
+
   {
     path: ':id',
     component: CaseDetailComponent,
