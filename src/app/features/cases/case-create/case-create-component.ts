@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CaseService } from '../services/case-service';
 
 @Component({
   selector: 'app-case-create-component',
@@ -11,13 +12,32 @@ import { Router } from '@angular/router';
 export class CaseCreateComponent {
   case!: FormGroup;
   statusOptions;
-  constructor(private fb: FormBuilder, private router: Router) {
+
+  isEditMode: boolean = false;
+  caseId!: string;
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private caseService: CaseService
+  ) {
     this.case = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', Validators.required],
       assignedTo: ['', Validators.required],
       status: ['', Validators.required],
     });
+
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.isEditMode = true;
+      this.caseId = id;
+      const existingCase = this.caseService.getCaseById(id);
+      if (existingCase) {
+        this.case.patchValue(existingCase);
+      }
+    }
+
     this.statusOptions = [
       { label: 'DRAFT', value: 'DRAFT' },
       { label: 'SUBMITTED', value: 'SUBMITTED' },
@@ -27,6 +47,13 @@ export class CaseCreateComponent {
   }
 
   onSubmit(): void {
+    if (this.isEditMode) {
+      const existingCase = this.caseService.getCaseById(this.caseId);
+      if (existingCase) {
+        this.caseService.updateCase({ ...existingCase, ...this.case.value });
+      }
+      // this.caseService.updateCase({ id: this.caseId, ...this.case.value });
+    }
     console.log('Case Created:', this.case.value.title);
     this.router.navigate(['/cases']);
   }
