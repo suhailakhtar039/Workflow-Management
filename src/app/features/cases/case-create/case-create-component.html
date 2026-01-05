@@ -1,5 +1,5 @@
 <form [formGroup]="case" (ngSubmit)="onSubmit()">
-  <p-card header="Create Case">
+  <p-card [header]="isEditMode ? 'Edit Case' : 'Create Case'">
     <div class="grid">
       <!-- Row 1 -->
       <div class="col-6">
@@ -54,7 +54,12 @@
 
       <!-- Button -->
       <div class="col-12 flex justify-content-center mt-4">
-        <button pButton type="submit" label="Create Case" [disabled]="case.invalid"></button>
+        <button
+          pButton
+          type="submit"
+          [label]="isEditMode ? 'Update Case' : 'Create Case'"
+          [disabled]="case.invalid"
+        ></button>
       </div>
     </div>
   </p-card>
