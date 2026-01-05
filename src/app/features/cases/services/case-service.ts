@@ -57,4 +57,10 @@ export class CaseService {
   getCaseById(id: string): Case | undefined {
     return this.cases.find((c) => c.id == id);
   }
+
+  updateCase(updatedCase: Case): void {
+    const index = this.cases.findIndex((c) => c.id === updatedCase.id);
+    this.cases[index] = { ...updatedCase };
+    this.casesSubject.next(this.cases);
+  }
 }
