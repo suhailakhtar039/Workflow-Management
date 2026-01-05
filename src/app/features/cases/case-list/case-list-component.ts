@@ -3,7 +3,7 @@ import { AuthService } from '../../../core/auth/auth.service';
 import { Case, CaseService } from '../services/case-service';
 import { map, Observable } from 'rxjs';
 import { User } from '../../../core/auth/auth.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-case-list-component',
@@ -23,7 +23,8 @@ export class CaseListComponent {
   constructor(
     private authService: AuthService,
     private caseService: CaseService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.currentUser$ = this.authService.currentUser$;
     this.cases$ = this.caseService.getCases();
@@ -37,6 +38,7 @@ export class CaseListComponent {
 
   onEdit(caseItem: Case): void {
     console.log('Edit case:', caseItem);
+    this.router.navigate(['/cases', caseItem.id, 'edit']);
   }
 
   onDelete(caseItem: Case): void {
