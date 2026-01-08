@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from './auth.model';
+import { Role, User } from './auth.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -31,5 +31,13 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return !!this.currentUserSubject.value;
+  }
+
+  hasRole(role: Role): boolean {
+    return this.currentUserSubject.value?.role === role;
+  }
+
+  hasAnyRole(roles: Role[]): boolean {
+    return roles.includes(this.currentUserSubject.value?.role as Role);
   }
 }
