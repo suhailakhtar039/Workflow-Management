@@ -246,61 +246,6 @@
             </ul>
           </li>
         </ul>
-        <!-- APPLICATION MENU -->
-        <ul class="list-none p-4 m-0">
-          <li>
-            <div
-              pRipple
-              pStyleClass="@next"
-              enterFromClass="hidden"
-              enterActiveClass="scalein"
-              leaveToClass="hidden"
-              leaveActiveClass="fadeout"
-              class="p-4 flex align-items-center justify-content-between text-color-secondary cursor-pointer"
-            >
-              <span class="font-medium">APPLICATION</span>
-              <i class="pi pi-chevron-down"></i>
-            </div>
-            <ul class="list-none p-0 m-0 overflow-hidden">
-              <li>
-                <a
-                  routerLink="/projects"
-                  routerLinkActive="surface-100"
-                  (click)="closeDrawer()"
-                  pRipple
-                  class="flex align-items-center cursor-pointer p-4 border-round text-color hover:surface-100 transition-duration-150 transition-colors"
-                >
-                  <i class="pi pi-folder mr-2"></i>
-                  <span class="font-medium">Projects</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  routerLink="/performance"
-                  routerLinkActive="surface-100"
-                  (click)="closeDrawer()"
-                  pRipple
-                  class="flex align-items-center cursor-pointer p-4 border-round text-color hover:surface-100 transition-duration-150 transition-colors"
-                >
-                  <i class="pi pi-chart-bar mr-2"></i>
-                  <span class="font-medium">Performance</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  routerLink="/app-settings"
-                  routerLinkActive="surface-100"
-                  (click)="closeDrawer()"
-                  pRipple
-                  class="flex align-items-center cursor-pointer p-4 border-round text-color hover:surface-100 transition-duration-150 transition-colors"
-                >
-                  <i class="pi pi-cog mr-2"></i>
-                  <span class="font-medium">Settings</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
       </div>
 
       <!-- User Profile at Bottom -->
@@ -310,7 +255,7 @@
           routerLink="/profile"
           (click)="closeDrawer()"
           pRipple
-          class="m-4 flex align-items-center cursor-pointer p-4 gap-2 border-round text-color hover:surface-100 transition-duration-150 transition-colors"
+          class="m-4 flex align-items-center cursor-pointer border-round text-color hover:surface-100 transition-duration-150 transition-colors"
         >
           <p-avatar
             image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
