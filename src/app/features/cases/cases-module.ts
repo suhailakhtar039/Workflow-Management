@@ -11,12 +11,15 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { SelectModule } from 'primeng/select';
 import { CardModule } from 'primeng/card';
 import { TextareaModule } from 'primeng/textarea';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //components
 import { CaseCreateComponent } from './case-create/case-create-component';
 import { CaseDetailComponent } from './case-detail/case-detail-component';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 //prime ng imports
 
@@ -30,6 +33,8 @@ const primengModulesAndImports = [
   SelectModule,
   CardModule,
   TextareaModule,
+  ToastModule,
+  ConfirmDialogModule,
 ];
 @NgModule({
   declarations: [CaseListComponent, CaseCreateComponent, CaseDetailComponent],
