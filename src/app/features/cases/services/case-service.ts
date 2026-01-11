@@ -63,4 +63,11 @@ export class CaseService {
     this.cases[index] = { ...updatedCase };
     this.casesSubject.next(this.cases);
   }
+
+  deleteCase(id: string): void {
+    const updatedCase = this.cases.filter((c) => c.id != id);
+    this.cases.length = 0;
+    this.cases.push(...updatedCase);
+    this.casesSubject.next(this.cases);
+  }
 }

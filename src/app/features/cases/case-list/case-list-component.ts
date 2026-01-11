@@ -46,12 +46,14 @@ export class CaseListComponent {
 
   onDelete(caseItem: Case): void {
     console.log('clicked on delete');
+
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete this case?',
       header: 'Confirm Delete',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.notificationService.success('Delete simulated');
+        this.caseService.deleteCase(caseItem.id);
+        this.notificationService.success('Case deleted successfully');
       },
     });
   }
