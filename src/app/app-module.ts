@@ -16,6 +16,8 @@ import { ButtonModule } from 'primeng/button';
 import { providePrimeNG } from 'primeng/config';
 import Lara from '@primeuix/themes/lara';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from './core/interceptors/error-interceptors';
 @NgModule({
   declarations: [App],
   imports: [
@@ -35,6 +37,11 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     MessageService,
     ConfirmationService,
     provideBrowserGlobalErrorListeners(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
     providePrimeNG({
       theme: {
         preset: Lara,
