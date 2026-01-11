@@ -1,3 +1,5 @@
+<p-toast />
+<p-confirmdialog />
 <div class="card">
   <p-table
     #dt
@@ -65,7 +67,7 @@
             icon="pi pi-trash"
             severity="danger"
             [text]="true"
-            (onClick)="onDelete(caseItem)"
+            (click)="onDelete(caseItem)"
           ></p-button>
 
           <span *ngIf="isViewer$ | async" class="text-gray-400"> View Only </span>
