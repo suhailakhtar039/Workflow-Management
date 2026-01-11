@@ -55,6 +55,9 @@ export class CaseListComponent {
         this.caseService.deleteCase(caseItem.id);
         this.notificationService.success('Case deleted successfully');
       },
+      reject: () => {
+        this.notificationService.warn('Case not deleted');
+      },
     });
   }
 

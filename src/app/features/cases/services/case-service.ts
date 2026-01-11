@@ -70,4 +70,16 @@ export class CaseService {
     this.cases.push(...updatedCase);
     this.casesSubject.next(this.cases);
   }
+
+  createCase(caseDate: Omit<Case, 'id' | 'createdAt'>) {
+    const maxId = this.cases.length ? Math.max(...this.cases.map((c) => Number(c.id))) : 0;
+
+    const newCase: Case = {
+      ...caseDate,
+      id: String(maxId + 1),
+      createdAt: new Date().toISOString(),
+    };
+    this.cases.push(newCase);
+    this.casesSubject.next(this.cases);
+  }
 }

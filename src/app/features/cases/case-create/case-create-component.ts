@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CaseService } from '../services/case-service';
+import { NotificationService } from '../../../core/services/notification-service';
 
 @Component({
   selector: 'app-case-create-component',
@@ -19,7 +20,8 @@ export class CaseCreateComponent {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private caseService: CaseService
+    private caseService: CaseService,
+    private notificationService: NotificationService
   ) {
     this.case = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
@@ -49,10 +51,15 @@ export class CaseCreateComponent {
   onSubmit(): void {
     if (this.isEditMode) {
       const existingCase = this.caseService.getCaseById(this.caseId);
+      if (!existingCase) return;
       if (existingCase) {
         this.caseService.updateCase({ ...existingCase, ...this.case.value });
       }
+      this.notificationService.success('Case Updated Successfully');
       // this.caseService.updateCase({ id: this.caseId, ...this.case.value });
+    } else {
+      this.caseService.createCase(this.case.value);
+      this.notificationService.success('Case created successfully');
     }
     console.log('Case Created:', this.case.value.title);
     this.router.navigate(['/cases']);
