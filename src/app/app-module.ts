@@ -15,6 +15,7 @@ import { AdminModule } from './features/admin/admin-module';
 import { ButtonModule } from 'primeng/button';
 import { providePrimeNG } from 'primeng/config';
 import Lara from '@primeuix/themes/lara';
+import { ConfirmationService, MessageService } from 'primeng/api';
 @NgModule({
   declarations: [App],
   imports: [
@@ -31,6 +32,8 @@ import Lara from '@primeuix/themes/lara';
     ButtonModule,
   ],
   providers: [
+    MessageService,
+    ConfirmationService,
     provideBrowserGlobalErrorListeners(),
     providePrimeNG({
       theme: {
