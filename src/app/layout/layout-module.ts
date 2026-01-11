@@ -10,6 +10,8 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { RippleModule } from 'primeng/ripple';
 import { ToolbarModule } from 'primeng/toolbar';
 import { MenuModule } from 'primeng/menu';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 const primeModule = [
   ButtonModule,
@@ -19,6 +21,8 @@ const primeModule = [
   RippleModule,
   ToolbarModule,
   MenuModule,
+  ToastModule,
+  ConfirmDialogModule,
 ];
 @NgModule({
   declarations: [LayoutComponent],

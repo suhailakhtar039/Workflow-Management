@@ -4,6 +4,8 @@ import { Case, CaseService } from '../services/case-service';
 import { map, Observable } from 'rxjs';
 import { User } from '../../../core/auth/auth.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationService } from '../../../core/services/notification-service';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-case-list-component',
@@ -24,7 +26,8 @@ export class CaseListComponent {
     private authService: AuthService,
     private caseService: CaseService,
     private router: Router,
-    private route: ActivatedRoute
+    private notificationService: NotificationService,
+    private confirmationService: ConfirmationService
   ) {
     this.currentUser$ = this.authService.currentUser$;
     this.cases$ = this.caseService.getCases();
@@ -42,7 +45,15 @@ export class CaseListComponent {
   }
 
   onDelete(caseItem: Case): void {
-    console.log('Delete case:', caseItem);
+    console.log('clicked on delete');
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete this case?',
+      header: 'Confirm Delete',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.notificationService.success('Delete simulated');
+      },
+    });
   }
 
   onView(caseItem: Case): void {
